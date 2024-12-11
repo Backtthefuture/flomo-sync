@@ -1,0 +1,46 @@
+{
+  "manifest_version": 3,
+  "name": "Flomo Sync",
+  "version": "1.0",
+  "description": "Sync article content to Flomo with a sidebar interface",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "commands",
+    "scripting"
+  ],
+  "action": {
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    },
+    "default_title": "Flomo Sync"
+  },
+  "commands": {
+    "toggle-sidebar": {
+      "suggested_key": {
+        "default": "Alt+F",
+        "mac": "Alt+F"
+      },
+      "description": "打开/关闭 Flomo 侧边栏"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "css": ["styles/sidebar.css"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "options_page": "options.html",
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  }
+}
