@@ -5,160 +5,168 @@
   width: 380px;
   height: 100vh;
   background: white;
-  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  box-shadow: -2px 0 20px rgba(0, 0, 0, 0.1);
   z-index: 999999;
-  transition: right 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+/* 确保所有元素使用 border-box */
+#flomo-sidebar *,
+#flomo-sidebar *::before,
+#flomo-sidebar *::after {
+  box-sizing: border-box;
 }
 
 .sidebar-header {
-  padding: 15px;
-  border-bottom: 1px solid #eee;
+  padding: 16px 20px;
+  background: #f8f9fa;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.sidebar-header h2 {
-  margin: 0;
-  font-size: 18px;
-  color: #333;
+.header-title {
+  display: flex;
+  flex-direction: column;
 }
 
-.sidebar-header button {
+.header-title h2 {
+  margin: 0;
+  font-size: 18px;
+  color: #3498db;
+  font-weight: 600;
+}
+
+.header-subtitle {
+  font-size: 12px;
+  color: #666;
+  margin-top: 2px;
+}
+
+.header-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.icon-button {
   background: none;
   border: none;
-  font-size: 20px;
+  padding: 8px;
   cursor: pointer;
-  padding: 5px;
+  border-radius: 6px;
+  color: #666;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-button:hover {
+  background: rgba(52, 152, 219, 0.1);
+  color: #3498db;
 }
 
 #flomo-close:hover {
-  color: #ff4444;
+  background: rgba(231, 76, 60, 0.1);
+  color: #e74c3c;
 }
 
 .sidebar-content {
   padding: 20px;
   flex-grow: 1;
   overflow-y: auto;
+  background: white;
 }
 
 .input-group {
   margin-bottom: 20px;
+  background: white;
+  border-radius: 8px;
 }
 
 .input-group label {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 6px;
   margin-bottom: 8px;
   color: #666;
   font-size: 14px;
+  font-weight: 500;
+}
+
+.input-icon {
+  color: #3498db;
+  flex-shrink: 0;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
 }
 
 .input-group input,
 .input-group textarea {
   width: 100%;
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  padding: 10px 12px;
+  border: 1px solid #e1e4e8;
+  border-radius: 6px;
   font-size: 14px;
-  margin-bottom: 8px;
+  line-height: 1.5;
+  transition: all 0.2s ease;
+  background: white;
+  margin: 0;
 }
 
 .input-group textarea {
-  height: 100px;
+  height: 300px;
   resize: vertical;
+  min-height: 200px;
+  max-width: 100%;
+}
+
+#flomo-thoughts {
+  height: 100px;
+  min-height: 60px;
 }
 
 .input-group input:read-only {
-  background-color: #f5f5f5;
+  background-color: #f8f9fa;
+  color: #666;
 }
 
-/* 提交按钮基础样式 */
-#flomo-submit {
-  position: relative;
-  width: 100%;
-  padding: 12px;
-  background: #4a90e2;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 500;
-  transition: all 0.3s ease;
+.input-group input:focus,
+.input-group textarea:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
 }
 
-/* 输入时的跳动效果 */
-#flomo-submit.typing {
-  animation: subtle-bounce 1.5s ease-in-out infinite;
-  background: #5c9ee6;
-}
-
-/* 达到字数时的呼吸效果 */
-#flomo-submit.ready {
-  animation: breathing 2s ease-in-out infinite;
-  background: #3498db;
-  transform: scale(1.02);
-}
-
-/* 悬停效果 */
-#flomo-submit:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-/* 轻微跳动动画 */
-@keyframes subtle-bounce {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.01);
-  }
-}
-
-/* 呼吸效果动画 */
-@keyframes breathing {
-  0%, 100% {
-    box-shadow: 0 0 10px rgba(52, 152, 219, 0.4);
-    transform: scale(1.02);
-  }
-  50% {
-    box-shadow: 0 0 20px rgba(52, 152, 219, 0.6);
-    transform: scale(1.03);
-  }
-}
-
-#flomo-settings {
-  font-size: 16px;
-  margin-right: 10px;
-}
-
-#flomo-settings:hover {
-  opacity: 0.8;
-}
-
-/* 标签和反馈文字容器 */
 .label-container {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   margin-bottom: 8px;
+  width: 100%;
 }
 
-.label-container label {
-  margin-bottom: 0;
-  margin-right: 10px;
-}
-
-/* 反馈文本样式 */
 .feedback-text {
   font-size: 12px;
   opacity: 0;
   transform: translateX(-10px);
   animation: fadeIn 0.3s forwards;
-  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: #f8f9fa;
+  margin-left: auto;
+  white-space: nowrap;
 }
 
 @keyframes fadeIn {
@@ -168,20 +176,107 @@
   }
 }
 
-.feedback-text.level1 { color: #666; }
-.feedback-text.level2 { color: #3498db; }
-.feedback-text.level3 { color: #27ae60; }
+.feedback-text.level1 { 
+  color: #666;
+  background: #f8f9fa;
+}
+
+.feedback-text.level2 { 
+  color: #3498db;
+  background: rgba(52, 152, 219, 0.1);
+}
+
+.feedback-text.level3 { 
+  color: #27ae60;
+  background: rgba(39, 174, 96, 0.1);
+}
+
 .feedback-text.level4 { 
   color: #e67e22;
-  font-weight: bold;
+  background: rgba(230, 126, 34, 0.1);
+  font-weight: 500;
 }
 
-/* 输入框样式优化 */
-#flomo-thoughts {
-  transition: border-color 0.3s ease;
+.submit-button {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  margin-top: 20px;
 }
 
-#flomo-thoughts:focus {
-  border-color: #3498db;
-  box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+.submit-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
+}
+
+.submit-button:active {
+  transform: translateY(0);
+}
+
+.button-icon {
+  transition: transform 0.3s ease;
+}
+
+.submit-button:hover .button-icon {
+  transform: translateX(4px);
+}
+
+.submit-button.typing {
+  animation: subtle-bounce 1.5s ease-in-out infinite;
+  background: linear-gradient(135deg, #3498db, #2980b9);
+}
+
+.submit-button.ready {
+  animation: breathing 2s ease-in-out infinite;
+  background: linear-gradient(135deg, #27ae60, #2ecc71);
+}
+
+@keyframes subtle-bounce {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+@keyframes breathing {
+  0%, 100% {
+    box-shadow: 0 4px 12px rgba(39, 174, 96, 0.2);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(39, 174, 96, 0.4);
+    transform: scale(1.02);
+  }
+}
+
+.sidebar-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.sidebar-content::-webkit-scrollbar-track {
+  background: #f8f9fa;
+}
+
+.sidebar-content::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 4px;
+}
+
+.sidebar-content::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
 }
