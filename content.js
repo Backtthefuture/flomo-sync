@@ -39,7 +39,10 @@ function createSidebar() {
         <textarea id="flomo-summary" placeholder="粘贴原文摘要..."></textarea>
       </div>
       <div class="input-group">
-        <label>个人感想</label>
+        <div class="label-container">
+          <label>个人感想</label>
+          <div id="thoughts-feedback" class="feedback-text"></div>
+        </div>
         <textarea id="flomo-thoughts" placeholder="输入你的想法..."></textarea>
       </div>
       <button id="flomo-submit">提交到 Flomo</button>
@@ -53,6 +56,7 @@ function createSidebar() {
     chrome.runtime.sendMessage({ action: 'open-settings' });
   });
   document.getElementById('flomo-submit').addEventListener('click', submitToFlomo);
+  document.getElementById('flomo-thoughts').addEventListener('input', handleThoughtsInput);
   
   // Auto-fill current page info
   document.getElementById('flomo-title').value = document.title;
@@ -107,5 +111,38 @@ async function submitToFlomo() {
     }
   } catch (error) {
     alert('同步失败：' + error.message);
+  }
+}
+
+function handleThoughtsInput(e) {
+  const thoughts = e.target.value;
+  const charCount = thoughts.length;
+  const submitBtn = document.getElementById('flomo-submit');
+  const feedback = document.getElementById('thoughts-feedback');
+  
+  // Handle button animation states
+  if (charCount === 0) {
+    submitBtn.className = ''; // Reset to default state
+  } else if (charCount < 50) {
+    submitBtn.className = 'typing'; // Add subtle bounce effect
+  } else {
+    submitBtn.className = 'ready'; // Add breathing effect
+  }
+  
+  // Update feedback text with new thresholds
+  if (charCount === 0) {
+    feedback.textContent = '';
+  } else if (charCount < 15) {
+    feedback.textContent = '写点想法...';
+    feedback.className = 'feedback-text level1';
+  } else if (charCount < 30) {
+    feedback.textContent = '继续写...';
+    feedback.className = 'feedback-text level2';
+  } else if (charCount < 50) {
+    feedback.textContent = '再来点！';
+    feedback.className = 'feedback-text level3';
+  } else {
+    feedback.textContent = '🎉 太棒了';
+    feedback.className = 'feedback-text level4';
   }
 }

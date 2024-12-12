@@ -75,20 +75,60 @@
   background-color: #f5f5f5;
 }
 
+/* 提交按钮基础样式 */
 #flomo-submit {
+  position: relative;
   width: 100%;
   padding: 12px;
-  background-color: #3498db;
+  background: #4a90e2;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.2s;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
 }
 
+/* 输入时的跳动效果 */
+#flomo-submit.typing {
+  animation: subtle-bounce 1.5s ease-in-out infinite;
+  background: #5c9ee6;
+}
+
+/* 达到字数时的呼吸效果 */
+#flomo-submit.ready {
+  animation: breathing 2s ease-in-out infinite;
+  background: #3498db;
+  transform: scale(1.02);
+}
+
+/* 悬停效果 */
 #flomo-submit:hover {
-  background-color: #2980b9;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* 轻微跳动动画 */
+@keyframes subtle-bounce {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.01);
+  }
+}
+
+/* 呼吸效果动画 */
+@keyframes breathing {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.4);
+    transform: scale(1.02);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(52, 152, 219, 0.6);
+    transform: scale(1.03);
+  }
 }
 
 #flomo-settings {
@@ -98,4 +138,50 @@
 
 #flomo-settings:hover {
   opacity: 0.8;
+}
+
+/* 标签和反馈文字容器 */
+.label-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.label-container label {
+  margin-bottom: 0;
+  margin-right: 10px;
+}
+
+/* 反馈文本样式 */
+.feedback-text {
+  font-size: 12px;
+  opacity: 0;
+  transform: translateX(-10px);
+  animation: fadeIn 0.3s forwards;
+  display: inline-block;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.feedback-text.level1 { color: #666; }
+.feedback-text.level2 { color: #3498db; }
+.feedback-text.level3 { color: #27ae60; }
+.feedback-text.level4 { 
+  color: #e67e22;
+  font-weight: bold;
+}
+
+/* 输入框样式优化 */
+#flomo-thoughts {
+  transition: border-color 0.3s ease;
+}
+
+#flomo-thoughts:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
 }
