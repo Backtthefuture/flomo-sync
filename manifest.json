@@ -1,13 +1,16 @@
 {
   "manifest_version": 3,
-  "name": "Flomo Sync",
-  "version": "1.0",
+  "name": "善思flomo",
+  "version": "1.6.0",
   "description": "Sync article content to Flomo with a sidebar interface",
   "permissions": [
     "activeTab",
     "storage",
     "commands",
-    "scripting"
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://open.bigmodel.cn/*"
   ],
   "action": {
     "default_icon": {
@@ -15,9 +18,16 @@
       "48": "images/icon48.png",
       "128": "images/icon128.png"
     },
-    "default_title": "Flomo Sync"
+    "default_title": "善思flomo"
   },
   "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Alt+F",
+        "mac": "Alt+F"
+      },
+      "description": "打开善思flomo侧边栏"
+    },
     "toggle-sidebar": {
       "suggested_key": {
         "default": "Alt+F",
@@ -32,7 +42,10 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "css": ["styles/sidebar.css"],
+      "css": [
+        "styles/sidebar.css",
+        "styles/christmas.css"
+      ],
       "js": ["content.js"],
       "run_at": "document_end"
     }

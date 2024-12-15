@@ -1,0 +1,226 @@
+/* 圣诞主题样式 */
+.christmas-theme {
+  --theme-color: #2c4c3b; /* 圣诞绿色 */
+}
+
+/* 圣诞主题样式 - Apple Design Style */
+#flomo-sidebar.christmas-theme {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-left: 3px solid;
+  border-image: linear-gradient(to bottom, #e8f3e8, #f5f9f5) 1;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 标题栏 */
+#flomo-sidebar.christmas-theme .sidebar-header {
+  background: linear-gradient(135deg, #e8f3e8 0%, #f5f9f5 100%);
+  border-bottom: none;
+  box-shadow: 0 1px 20px rgba(232, 243, 232, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 1;
+}
+
+#flomo-sidebar.christmas-theme .header-title h2 {
+  color: #2c4c3b;
+  font-family: -apple-system, 'SF Pro Display', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  text-shadow: none;
+}
+
+#flomo-sidebar.christmas-theme .header-title h2::before {
+  content: "🎅";
+  margin-right: 8px;
+  font-size: 0.9em;
+}
+
+#flomo-sidebar.christmas-theme .header-title h2::after {
+  content: "🎄";
+  margin-left: 8px;
+  font-size: 0.9em;
+}
+
+#flomo-sidebar.christmas-theme .header-subtitle {
+  color: #3d6b52;
+  font-family: -apple-system, 'SF Pro Text', sans-serif;
+  font-weight: 400;
+}
+
+#flomo-sidebar.christmas-theme .icon-button {
+  color: #2c4c3b;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 8px;
+  padding: 8px;
+}
+
+#flomo-sidebar.christmas-theme .icon-button:hover {
+  background: rgba(44, 76, 59, 0.1);
+  transform: scale(1.05);
+}
+
+/* 输入框 */
+#flomo-sidebar.christmas-theme .input-group textarea {
+  border: 1px solid rgba(44, 76, 59, 0.1);
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+  box-shadow: inset 0 2px 4px rgba(44, 76, 59, 0.05);
+  font-family: -apple-system, 'SF Pro Text', sans-serif;
+  padding: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  resize: vertical;  /* 允许垂直拉伸 */
+}
+
+#flomo-sidebar.christmas-theme #flomo-summary {
+  height: 150px; /* 设置默认高度 */
+  min-height: 100px;
+  max-height: 300px;
+}
+
+#flomo-sidebar.christmas-theme #flomo-thoughts {
+  min-height: 100px;
+  max-height: 500px;
+}
+
+#flomo-sidebar.christmas-theme .input-group textarea:focus {
+  background: #ffffff;
+  border-color: #3d6b52;
+  box-shadow: 0 0 0 3px rgba(61, 107, 82, 0.1);
+  transform: translateY(-1px);
+}
+
+#flomo-sidebar.christmas-theme .input-group textarea::placeholder {
+  content: "🎄 写下你的想法...";
+  color: rgba(44, 76, 59, 0.4);
+}
+
+#flomo-sidebar.christmas-theme .input-group::before {
+  content: "🎁";
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  font-size: 16px;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* 提交按钮保持原来的绿色 */
+#flomo-sidebar.christmas-theme #flomo-submit {
+  background: linear-gradient(135deg, #40c057 0%, #2f9e44 100%);
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0 2px 8px rgba(47, 158, 68, 0.2);
+  color: white;
+  font-family: -apple-system, 'SF Pro Text', sans-serif;
+  font-weight: 500;
+  padding: 12px 24px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#flomo-sidebar.christmas-theme #flomo-submit::before {
+  content: "🎅";
+  margin-right: 8px;
+}
+
+#flomo-sidebar.christmas-theme #flomo-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(47, 158, 68, 0.3);
+}
+
+#flomo-sidebar.christmas-theme #flomo-submit:active {
+  transform: translateY(0);
+}
+
+/* AI总结按钮 */
+#flomo-sidebar.christmas-theme #ai-summary {
+  background: linear-gradient(135deg, #2c4c3b 0%, #3d6b52 100%);
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0 2px 8px rgba(44, 76, 59, 0.2);
+  color: white;
+  font-family: -apple-system, 'SF Pro Text', sans-serif;
+  font-weight: 500;
+  padding: 8px 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#flomo-sidebar.christmas-theme #ai-summary::before {
+  content: "🔔";
+  margin-right: 8px;
+}
+
+#flomo-sidebar.christmas-theme #ai-summary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(44, 76, 59, 0.3);
+}
+
+#flomo-sidebar.christmas-theme #ai-summary:active {
+  transform: translateY(0);
+}
+
+/* 装饰元素 */
+#flomo-sidebar.christmas-theme::before {
+  content: "🎄";
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 16px;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+#flomo-sidebar.christmas-theme::after {
+  content: "❄️";
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-size: 16px;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+/* 滚动条 */
+#flomo-sidebar.christmas-theme textarea::-webkit-scrollbar {
+  width: 8px;
+}
+
+#flomo-sidebar.christmas-theme textarea::-webkit-scrollbar-track {
+  background: rgba(44, 76, 59, 0.05);
+  border-radius: 4px;
+}
+
+#flomo-sidebar.christmas-theme textarea::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #3d6b52 0%, #2c4c3b 100%);
+  border-radius: 4px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+#flomo-sidebar.christmas-theme textarea::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #2c4c3b 0%, #1a2f24 100%);
+}
+
+/* 写作进度反馈 */
+#flomo-sidebar.christmas-theme .writing-status {
+  color: #40c057;
+  font-family: -apple-system, 'SF Pro Text', sans-serif;
+  font-weight: 500;
+}
+
+/* 状态提示 */
+#flomo-sidebar.christmas-theme .status-message {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(44, 76, 59, 0.1);
+  padding: 12px 20px;
+  font-family: -apple-system, 'SF Pro Text', sans-serif;
+}
+
+#flomo-sidebar.christmas-theme .status-message::before {
+  content: "🎁";
+  margin-right: 8px;
+}

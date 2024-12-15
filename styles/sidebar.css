@@ -2,7 +2,7 @@
   position: fixed;
   top: 0;
   right: -400px;
-  width: 380px;
+  width: min(max(280px, 25vw), 380px);
   height: 100vh;
   background: white;
   box-shadow: -2px 0 20px rgba(0, 0, 0, 0.1);
@@ -23,7 +23,7 @@
 }
 
 .sidebar-header {
-  padding: 16px 20px;
+  padding: min(16px, 2vh) min(20px, 2vw);
   background: #f8f9fa;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   display: flex;
@@ -38,13 +38,13 @@
 
 .header-title h2 {
   margin: 0;
-  font-size: 18px;
+  font-size: min(18px, 1.2vw);
   color: #3498db;
   font-weight: 600;
 }
 
 .header-subtitle {
-  font-size: 12px;
+  font-size: min(12px, 0.8vw);
   color: #666;
   margin-top: 2px;
 }
@@ -78,16 +78,20 @@
 }
 
 .sidebar-content {
-  padding: 20px;
+  padding: min(20px, 2vh) min(20px, 2vw);
   flex-grow: 1;
   overflow-y: auto;
   background: white;
+  display: flex;
+  flex-direction: column;
+  gap: min(20px, 2vh);
 }
 
 .input-group {
-  margin-bottom: 20px;
+  margin-bottom: min(20px, 2vh);
   background: white;
   border-radius: 8px;
+  flex-shrink: 0;
 }
 
 .input-group label {
@@ -96,13 +100,19 @@
   gap: 6px;
   margin-bottom: 8px;
   color: #666;
-  font-size: 14px;
+  font-size: min(14px, 1vw);
   font-weight: 500;
+}
+
+.label-text {
+  margin-right: 8px;
 }
 
 .input-icon {
   color: #3498db;
   flex-shrink: 0;
+  width: min(16px, 1.2vw);
+  height: min(16px, 1.2vw);
 }
 
 .input-container {
@@ -115,10 +125,10 @@
 .input-group input,
 .input-group textarea {
   width: 100%;
-  padding: 10px 12px;
+  padding: min(10px, 1vh) min(12px, 1vw);
   border: 1px solid #e1e4e8;
   border-radius: 6px;
-  font-size: 14px;
+  font-size: min(14px, 1vw);
   line-height: 1.5;
   transition: all 0.2s ease;
   background: white;
@@ -126,15 +136,69 @@
 }
 
 .input-group textarea {
-  height: 300px;
-  resize: vertical;
-  min-height: 200px;
-  max-width: 100%;
+  width: 100%;
+  padding: min(10px, 1vh) min(12px, 1vw);
+  border: 1px solid #e1e4e8;
+  border-radius: 6px;
+  font-size: min(14px, 1vw);
+  line-height: 1.5;
+  transition: all 0.3s ease-out;
+  background: white;
+  margin: 0;
 }
 
 #flomo-thoughts {
-  height: 100px;
-  min-height: 60px;
+  height: auto;
+  min-height: min(80px, 12vh);
+  max-height: 500px;
+  transition: height 0.2s ease;
+  overflow-y: auto;
+  resize: vertical; /* 允许垂直拉伸 */
+}
+
+#flomo-thoughts::-webkit-scrollbar {
+  width: 6px;
+}
+
+#flomo-thoughts::-webkit-scrollbar-track {
+  background: #f8f9fa;
+  border-radius: 3px;
+}
+
+#flomo-thoughts::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 3px;
+}
+
+#flomo-thoughts::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
+}
+
+#flomo-summary {
+  height: 150px; /* 设置默认高度 */
+  min-height: 100px;
+  max-height: 300px;
+  transition: height 0.2s ease;
+  overflow-y: auto;
+  resize: vertical; /* 允许垂直拉伸 */
+}
+
+#flomo-summary::-webkit-scrollbar {
+  width: 6px;
+}
+
+#flomo-summary::-webkit-scrollbar-track {
+  background: #f8f9fa;
+  border-radius: 3px;
+}
+
+#flomo-summary::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 3px;
+}
+
+#flomo-summary::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
 }
 
 .input-group input:read-only {
@@ -158,14 +222,13 @@
 }
 
 .feedback-text {
-  font-size: 12px;
+  font-size: min(12px, 0.8vw);
   opacity: 0;
   transform: translateX(-10px);
   animation: fadeIn 0.3s forwards;
   padding: 4px 8px;
   border-radius: 4px;
-  background: #f8f9fa;
-  margin-left: auto;
+  margin-left: 4px;
   white-space: nowrap;
 }
 
@@ -197,15 +260,36 @@
   font-weight: 500;
 }
 
+/* 输入框渐变效果 */
+#flomo-thoughts.level1 {
+  border-color: #e1e4e8;
+  background: #ffffff;
+}
+
+#flomo-thoughts.level2 {
+  border-image: linear-gradient(to right, #3498db, #2980b9) 1;
+  background: #f7fbfe;
+}
+
+#flomo-thoughts.level3 {
+  border-image: linear-gradient(to right, #9b59b6, #8e44ad) 1;
+  background: #faf5ff;
+}
+
+#flomo-thoughts.level4 {
+  border-image: linear-gradient(to right, #f1c40f, #f39c12) 1;
+  background: #fffbeb;
+}
+
 .submit-button {
   width: 100%;
-  padding: 12px;
+  padding: min(16px, 2vh) min(16px, 2vw);  
   background: linear-gradient(135deg, #3498db, #2980b9);
   color: white;
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: min(14px, 1vw);
   font-weight: 500;
   display: flex;
   align-items: center;
@@ -214,7 +298,8 @@
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  margin-top: 20px;
+  margin-top: min(20px, 2vh);
+  height: min(max(48px, 6vh), 56px);  
 }
 
 .submit-button:hover {
@@ -235,37 +320,15 @@
 }
 
 .submit-button.typing {
-  animation: subtle-bounce 1.5s ease-in-out infinite;
   background: linear-gradient(135deg, #3498db, #2980b9);
 }
 
 .submit-button.ready {
-  animation: breathing 2s ease-in-out infinite;
   background: linear-gradient(135deg, #27ae60, #2ecc71);
 }
 
-@keyframes subtle-bounce {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.02);
-  }
-}
-
-@keyframes breathing {
-  0%, 100% {
-    box-shadow: 0 4px 12px rgba(39, 174, 96, 0.2);
-    transform: scale(1);
-  }
-  50% {
-    box-shadow: 0 4px 20px rgba(39, 174, 96, 0.4);
-    transform: scale(1.02);
-  }
-}
-
 .sidebar-content::-webkit-scrollbar {
-  width: 8px;
+  width: min(8px, 1vw);
 }
 
 .sidebar-content::-webkit-scrollbar-track {
@@ -279,4 +342,21 @@
 
 .sidebar-content::-webkit-scrollbar-thumb:hover {
   background: #a0aec0;
+}
+
+/* 主题颜色变量 */
+:root {
+  --theme-color: #333;
+  --theme-transition: color 0.3s ease;
+}
+
+/* 图标和文字颜色统一使用主题色 */
+.sidebar-header .title-icon,
+.content-icon,
+.thought-icon,
+.ai-summary,
+#ai-summarize,
+#ai-loading span {
+  color: var(--theme-color);
+  transition: var(--theme-transition);
 }
