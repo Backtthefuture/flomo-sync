@@ -451,7 +451,13 @@ async function submitToFlomo() {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        content: `[📖 ${title}](${url})\n\n📝 原文摘要：\n${summary}\n\n💭 感想：\n${thoughts}\n\n${tag}`
+        content: `[📖 ${title}](${url})${
+          summary.trim() ? `\n\n------------------------------------------------------------\n\n📝 原文摘要：\n${summary}` : ''
+        }${
+          thoughts.trim() ? `\n\n------------------------------------------------------------\n\n💭 个人感想：\n${thoughts}` : ''
+        }${
+          tag ? `\n\n${tag}` : ''
+        }`
       })
     });
 
@@ -547,7 +553,7 @@ function handleThoughtsInput(e) {
 }
 
 // Add GLM-4 API integration
-const API_KEY = '19cab58eb5a8e251e0c79994d18dd96b.14wFSExu99E7hRs5';
+const API_KEY = '3da54b4b6c74c07390875f6981df88dc.D9LxP7hOlMyDbXvG';
 
 async function summarizeWithAI(text) {
   const endpoint = 'https://open.bigmodel.cn/api/paas/v4/chat/completions';
